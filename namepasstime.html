@@ -1,0 +1,30 @@
+<html>
+<head>
+<script>
+function readvalues()
+{
+stu_name=form_reg.name.value;
+stu_password=document.form_reg.pwd.value;
+if((stu_name==" "||stu_name==null) ||(stu_password==" "||stu_password==null))
+{
+window.alert("please enter name and password");
+}
+else
+{
+document.writeln("<br>welcome<br>");
+document.writeln(stu_name);
+document.writeln("<br>");
+document.writeln(stu_password);
+}
+}
+</script>
+<head>
+<body>
+<form name="form_reg" action="serveraddress">
+name:<input type="text" name="name"  value=" "><br>
+password:<input type="password" name="pwd" value=""><br>
+<input type="button" value="click  here" onclick=" readvalues()">
+</form>
+</body>
+</html>
+
