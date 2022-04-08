@@ -1,0 +1,157 @@
+import java.sql.*;
+--> EMPLOYEE TABLE
+
+import java.util.*;(in this sql injection error)
+class employt
+{
+public static void main(String args[]) throws SQLException,ClassNotFoundException
+{
+try
+{
+Class.forName("oracle.jdbc.driver.OracleDriver");
+System.out.println("Loaded");
+Connection con=DriverManager.getConnection("jdbc:oracle:thin:@ntsocietyserver:1521:oralbrce","IPC117","IPC117");
+System.out.println("established");
+//read empno from the user
+Scanner s =new Scanner(System.in);
+System.out.println("enter the employee id");
+int n=s.nextInt();
+//creation of statement object
+Statement sct=con.createStatement();
+String sql="select *from emp"; 
+ResultSet rs=sct.executeQuery(sql);
+boolean result=false;
+while(rs.next())
+{
+// to check the rows line by line untill all the record are complex
+//verify input  empno with first column of your table
+int n=s.nextInt();
+if(n==rs.getInt(1))
+{
+System.out.println("you are valid user");
+System.out.println("Hello"+rs.getString(2));
+result=true;
+break;
+}
+}
+if(result==false)
+{
+System.out.println("you are invalid  user");
+}
+}
+catch(Exception e)
+{
+System.out.println(e);
+}
+}
+}
+-->STUDENT TABLE
+
+import java.sql.*;
+import java.util.*;
+class Example
+{
+public static void main(String args[]) 
+{
+try
+{
+Class.forName("oracle.jdbc.driver.OracleDriver");
+System.out.println("Loaded");
+Connection con=DriverManager.getConnection("jdbc:oracle:thin:@ntsocietyserver:1521:oralbrce","IPC117","IPC117");
+System.out.println("established");
+Statement sct=con.createStatement();
+String sq="insert into student values('cseb',34)";
+String sq1="insert into student values('csea',36)";
+String sq2="insert into student values('csec',37)";
+String sq3="insert into student values('csed',38)";
+ sct.executeQuery(sq);
+ sct.executeQuery(sq1);
+ sct.executeQuery(sq2);
+ sct.executeQuery(sq3);
+Scanner s =new Scanner(System.in);
+System.out.println("enter the student name");
+String n1=s.next();
+String sql="select *from student where name="+n1 ; 
+ResultSet rs=sct.executeQuery(sql);
+boolean result=false;
+while(rs.next())
+{
+// to check the rows line by line untill all the record are complex
+//verify input  empno with first column of your table
+if(n1.equals(rs.getString(1)))
+{
+System.out.println("you are valid user");
+System.out.println("Hello");
+result=true;
+break;
+}
+}
+if(result==false)
+{
+System.out.println("you are invalid  user");
+}
+}
+catch(Exception e)
+{
+System.out.println(e);
+}
+}
+}
+
+TO GIVE DATA DYNAMICALLY
+
+ prepared statement
+-->write the parameterized Query
+-->to  supply input dynamically for the insert/delete/update/select
+Syntax
+preparedStatement ps=connection_object.preparedStatement("sql Query");
+preparedStatement ps=con.preparedStatement("insert into emp values(,,,)");
+
+or
+String sql="insert into emp values(,,,)";
+preparedStatement ps=con.preparedStatement(sql);
+//set the values
+object_preparedStatement.setDataType(columnIndex,value);
+ps.setInt(1,1234);
+or 
+ps.setInt(1,n);//n number is read from the user input
+ps.setInt(3,sal);//sal value is set to column index 3
+ps.setString(2,name);
+//Execute Query/ExecuteUpdate
+ps.executeUpdate();
+
+EXAMPLE:-
+
+
+import java.sql.*;
+import java.util.*;
+class dynamicdata
+{
+public static void main(String args[]) throws SQLException,ClassNotFoundException
+{
+try
+{
+Class.forName("oracle.jdbc.driver.OracleDriver");
+System.out.println("Loaded");
+Connection con=DriverManager.getConnection("jdbc:oracle:thin:@ntsocietyserver:1521:oralbrce","IPC117","IPC117");
+System.out.println("established"); 
+Statement sct=con.createStatement();
+String s1="create table S(n int,name varchar(20),age int)";
+sct.executeQuery(s1);
+PreparedStatement ps=con.prepareStatement("insert into S values(?,?,?)");
+Scanner s=new Scanner(System.in);
+int n=s.nextInt();
+String name=s.next();
+int age=s.nextInt();
+ps.setInt(1,n);
+ps.setString(2,name);
+ps.setInt(3,age);
+ps.executeUpdate();
+}
+catch(Exception e)
+{
+System.out.println(e);
+}
+}
+}
+
