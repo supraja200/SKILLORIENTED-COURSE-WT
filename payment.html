@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>
+payment form
+</title>
+<style>
+body {
+  background-image: url('back.jpeg');
+  background-repeat: no-repeat;
+   background-size: cover;
+}
+</style>
+<script>
+function show() {
+  window.alert("payment successfull");
+}
+</script>
+</head>
+<body bgcolor="pink">
+<a href="website.html" target="_blank"><button style="background-color:blue" ><font color="white" >Home</font></button></a>
+<center><h1 color="white" style="background-color:"black"><br><br>Payment Form</h1></center>
+<center> card Number &nbsp<input type="text" name="n1" placeholder="Enter card number" required ></center><br><br>
+<center> 
+&nbsp &nbsp &nbsp  &nbsp &nbsp Expiration &nbsp &nbsp  
+<select>
+<option>january</option>
+<option>February</option>
+<option>March</option>
+<option>April</option>
+<option>May</option>
+<option>june</option>
+<option>july</option>
+<select>  &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp
+<select>
+<option>2016</option>
+<option>2017</option>
+<option>2018</option>
+<option>2019</option>
+<option>2020</option>
+<option>2021</option>
+<option>2022</option>
+<select>
+</center><br><br><br>
+<center> CVC/CVV &nbsp <input type="text" name="n2" placeholder="Enter cvc/cvv number"></center><br>
+<h4 align="center">Payment Mode</h4><br>
+<center> Gpay &nbsp<input type="radio" name="n4" value="Gpay">
+Ppay&nbsp<input type="radio" name="n4" value="Ppay">
+Paytm &nbsp<input type="radio" name="n4" value="Paytm"</center><br><br><br>
+<center><p onclick="show()" type="button"><button style="background-color:green">Pay now</button></p></center> 
+
+
+
+</body>
+</html>
